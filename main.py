@@ -22,11 +22,10 @@ class PongBall:
 
     """ Check if a pad has been hit """
     def hit_pad(self, pad):
-        if self.x > pad.x and self.x < pad.x + pad.WIDTH:
-            if self.y > pad.y and self.y < pad.y + pad.HEIGHT:
-                return True
+        ball_rect = pygame.Rect(self.x, self.y, self.SIZE, self.SIZE)
+        pad_rect = pygame.Rect(pad.x, pad.y, pad.WIDTH, pad.HEIGHT)
 
-        return False
+        return ball_rect.colliderect(pad_rect)
 
     """ Reverse direction after a hit """
     def update_direction_after_hit(self):
