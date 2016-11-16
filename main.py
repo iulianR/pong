@@ -61,8 +61,16 @@ class PongPad:
     def move_up(self):
         self.y -= self.SPEED
 
+        # Stop at top border
+        if self.y < 0:
+            self.y = 0
+
     def move_down(self):
         self.y += self.SPEED
+
+        # Stop at bottom border
+        if self.y + self.HEIGHT > PongGame.HEIGHT:
+            self.y -= self.SPEED
 
     """ Draw the paddle at it's position """
     def render(self, background):
